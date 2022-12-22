@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+export PYBUILD_NAME=geoip
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_test: # Data needed for tests not packaged

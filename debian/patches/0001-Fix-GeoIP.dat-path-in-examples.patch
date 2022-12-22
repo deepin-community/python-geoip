@@ -1,0 +1,146 @@
+From: Scott Kitterman <scott@kitterman.com>
+Date: Sun, 9 Dec 2018 18:23:04 -0500
+Subject: Fix GeoIP.dat path in examples
+
+---
+ examples/city.py         | 2 +-
+ examples/city_charset.py | 2 +-
+ examples/country.py      | 2 +-
+ examples/domain.py       | 2 +-
+ examples/netspeed.py     | 2 +-
+ examples/netspeedcell.py | 2 +-
+ examples/org.py          | 2 +-
+ examples/region.py       | 2 +-
+ examples/t.py            | 2 +-
+ examples/v6.py           | 2 +-
+ 10 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/examples/city.py b/examples/city.py
+index 00d9946..8db05b9 100644
+--- a/examples/city.py
++++ b/examples/city.py
+@@ -4,7 +4,7 @@ from __future__ import print_function
+ 
+ import GeoIP
+ 
+-gi = GeoIP.open("/usr/local/share/GeoIP/GeoIPCity.dat", GeoIP.GEOIP_STANDARD)
++gi = GeoIP.open("/usr/share/GeoIP/GeoIPCity.dat", GeoIP.GEOIP_STANDARD)
+ 
+ gir = gi.record_by_name("www.google.com")
+ #gir = gi.record_by_addr("24.24.24.24")
+diff --git a/examples/city_charset.py b/examples/city_charset.py
+index 402a6bb..eabe350 100644
+--- a/examples/city_charset.py
++++ b/examples/city_charset.py
+@@ -5,7 +5,7 @@
+ import GeoIP
+ 
+ # open the citydatabase. All cities return in iso-8859-1 by default
+-gi = GeoIP.open("/usr/local/share/GeoIP/GeoIPCity.dat", GeoIP.GEOIP_STANDARD)
++gi = GeoIP.open("/usr/share/GeoIP/GeoIPCity.dat", GeoIP.GEOIP_STANDARD)
+ 
+ # lookup a record, where cityname contains chars > 127 ( eg != ascii )
+ gir = gi.record_by_name("www.osnabrueck.de")
+diff --git a/examples/country.py b/examples/country.py
+index 5f2b42b..1893309 100644
+--- a/examples/country.py
++++ b/examples/country.py
+@@ -7,7 +7,7 @@ import GeoIP
+ #gi = GeoIP.new(GeoIP.GEOIP_STANDARD)
+ #gi = GeoIP.new(GeoIP.GEOIP_MMAP_CACHE)
+ gi = GeoIP.new(GeoIP.GEOIP_MEMORY_CACHE)
+-#gi = GeoIP.open("/usr/local/share/GeoIP/GeoIP.dat",GeoIP.GEOIP_STANDARD)
++#gi = GeoIP.open("/usr/share/GeoIP/GeoIP.dat",GeoIP.GEOIP_STANDARD)
+ 
+ print(gi.country_code_by_name("yahoo.com"))
+ print(gi.last_netmask())
+diff --git a/examples/domain.py b/examples/domain.py
+index 05d82e7..da7834e 100644
+--- a/examples/domain.py
++++ b/examples/domain.py
+@@ -4,6 +4,6 @@ from __future__ import print_function
+ 
+ import GeoIP
+ 
+-gi = GeoIP.open("/usr/local/share/GeoIP/GeoIPDomain.dat", GeoIP.GEOIP_STANDARD)
++gi = GeoIP.open("/usr/share/GeoIP/GeoIPDomain.dat", GeoIP.GEOIP_STANDARD)
+ 
+ print(gi.org_by_addr("24.24.24.24"))
+diff --git a/examples/netspeed.py b/examples/netspeed.py
+index 4490f21..da2f3b4 100644
+--- a/examples/netspeed.py
++++ b/examples/netspeed.py
+@@ -5,7 +5,7 @@ from __future__ import print_function
+ import GeoIP
+ 
+ gi = GeoIP.open(
+-    "/usr/local/share/GeoIP/GeoIPNetspeed.dat", GeoIP.GEOIP_STANDARD)
++    "/usr/share/GeoIP/GeoIPNetspeed.dat", GeoIP.GEOIP_STANDARD)
+ 
+ # GEOIP_UNKNOWN_SPEED, GEOIP_DIALUP_SPEED, GEOIP_CABLEDSL_SPEED or
+ # GEOIP_CORPORATE_SPEED
+diff --git a/examples/netspeedcell.py b/examples/netspeedcell.py
+index 0a258dd..49d9bcd 100644
+--- a/examples/netspeedcell.py
++++ b/examples/netspeedcell.py
+@@ -5,7 +5,7 @@ from __future__ import print_function
+ import GeoIP
+ 
+ gi = GeoIP.open(
+-    "/usr/local/share/GeoIP/GeoIPNetSpeedCell.dat", GeoIP.GEOIP_STANDARD)
++    "/usr/share/GeoIP/GeoIPNetSpeedCell.dat", GeoIP.GEOIP_STANDARD)
+ 
+ print(gi.org_by_name("yahoo.com"))
+ print(gi.org_by_name("www.google.com"))
+diff --git a/examples/org.py b/examples/org.py
+index cf22284..202ba44 100644
+--- a/examples/org.py
++++ b/examples/org.py
+@@ -4,7 +4,7 @@ from __future__ import print_function
+ 
+ import GeoIP
+ 
+-gi = GeoIP.open("/usr/local/share/GeoIP/GeoIPOrg.dat", GeoIP.GEOIP_STANDARD)
++gi = GeoIP.open("/usr/share/GeoIP/GeoIPOrg.dat", GeoIP.GEOIP_STANDARD)
+ 
+ print(gi.org_by_name("yahoo.com"))
+ print(gi.org_by_name("www.google.com"))
+diff --git a/examples/region.py b/examples/region.py
+index fef9fc1..f53bd4a 100644
+--- a/examples/region.py
++++ b/examples/region.py
+@@ -4,7 +4,7 @@ from __future__ import print_function
+ 
+ import GeoIP
+ 
+-gi = GeoIP.open("/usr/local/share/GeoIP/GeoIPRegion.dat", GeoIP.GEOIP_STANDARD)
++gi = GeoIP.open("/usr/share/GeoIP/GeoIPRegion.dat", GeoIP.GEOIP_STANDARD)
+ 
+ gir = gi.region_by_name("www.google.com")
+ if gir is not None:
+diff --git a/examples/t.py b/examples/t.py
+index f3ec272..8996f1a 100644
+--- a/examples/t.py
++++ b/examples/t.py
+@@ -3,7 +3,7 @@
+ import GeoIP
+ 
+ # open the citydatabase. All cities return in iso-8859-1 by default
+-gi = GeoIP.open("/usr/local/share/GeoIP/GeoIPCity.dat", GeoIP.GEOIP_STANDARD)
++gi = GeoIP.open("/usr/share/GeoIP/GeoIPCity.dat", GeoIP.GEOIP_STANDARD)
+ 
+ # lookup a record, where cityname contains chars > 127 ( eg != ascii )
+ gir = gi.record_by_name("www.osnabrueck.de")
+diff --git a/examples/v6.py b/examples/v6.py
+index 5827c07..72ee867 100644
+--- a/examples/v6.py
++++ b/examples/v6.py
+@@ -6,7 +6,7 @@ import GeoIP
+ 
+ #gi = GeoIP.new(GeoIP.GEOIP_STANDARD)
+ #gi = GeoIP.new(GeoIP.GEOIP_MEMORY_CACHE)
+-gi = GeoIP.open("/usr/local/share/GeoIP/GeoIPv6.dat", GeoIP.GEOIP_STANDARD)
++gi = GeoIP.open("/usr/share/GeoIP/GeoIPv6.dat", GeoIP.GEOIP_STANDARD)
+ 
+ print(gi.country_code_by_name_v6("ipv6.google.com"))
+ print(gi.country_name_by_name_v6("ipv6.google.com"))
